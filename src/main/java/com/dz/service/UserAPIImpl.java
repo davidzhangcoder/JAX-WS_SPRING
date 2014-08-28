@@ -1,10 +1,10 @@
-package com.dz.user;
+package com.dz.service;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dz.common.DAOImpl;
 import com.dz.configurable.User;
-import com.dz.user.api.UserAPI;
+import com.dz.service.api.UserAPI;
 
 @Transactional
 public class UserAPIImpl implements UserAPI 

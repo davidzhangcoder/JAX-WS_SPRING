@@ -1,4 +1,4 @@
-package com.dz.user.api;
+package com.dz.service.api;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -15,4 +15,7 @@ public interface UserService
 {
 	@WebMethod
 	public void addOrUpdateUser( @WebParam(name="user") User user);
+	
+	@WebMethod
+	public User login( @WebParam(name="user") User user );
 }

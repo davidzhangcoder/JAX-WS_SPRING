@@ -1,12 +1,12 @@
-package com.dz.user;
+package com.dz.service;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import com.dz.configurable.User;
-import com.dz.user.api.UserAPI;
-import com.dz.user.api.UserService;
+import com.dz.service.api.UserAPI;
+import com.dz.service.api.UserService;
 
 
 @WebService(targetNamespace = "http://dz.com/",
@@ -23,6 +23,14 @@ public class UserServiceImpl implements UserService
 	{
 		userAPIImpl.persistUser(  user );
 	}
+	
+	@Override
+	@WebMethod
+	public User login( @WebParam(name = "user") User user )
+	{
+		return null;
+	}
+
 
 	public UserAPIImpl getUserAPIImpl() {
 		return userAPIImpl;

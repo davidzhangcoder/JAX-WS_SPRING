@@ -1,4 +1,4 @@
-package com.dz.user.api;
+package com.dz.service.api;
 
 import com.dz.configurable.User;
 
