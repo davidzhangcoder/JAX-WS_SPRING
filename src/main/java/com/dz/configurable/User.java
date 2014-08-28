@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity       
 @Table(name = "USER")
-public class User implements Serializable
+public class User extends ConfigurableBase
 {
 
 	private static final long serialVersionUID = -2174379412821116975L;

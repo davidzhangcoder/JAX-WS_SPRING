@@ -3,9 +3,7 @@ package com.dz.common;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
+import com.dz.configurable.ConfigurableBase;
 import com.dz.configurable.User;
 
 public class DAOImpl implements IDAO {  
@@ -92,20 +90,15 @@ public class DAOImpl implements IDAO {
 //    }  
   
 //    @Transactional(value = "transactionManager", propagation = Propagation.REQUIRED)
-    public boolean save() {  
+    public <T extends ConfigurableBase> T save( T base )
+    {  
 //        getEntityManager().getTransaction().begin();  
 //        getEntityManager().persist(obj);  
 //        getEntityManager().getTransaction().commit();  
 //        return true;  
         
-		User newUser = new User();
-		
-//		newUser.setID(1);
-		newUser.setUserName("david");
-
-    	
-        em.persist(newUser);  
-        return true;  
+        em.persist( base );  
+        return base;  
 
     }  
   

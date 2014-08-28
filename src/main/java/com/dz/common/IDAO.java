@@ -1,125 +1,123 @@
 package com.dz.common;
 
-import java.io.Serializable;  
-import java.util.Collection;  
-import java.util.List;  
-
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.dz.configurable.ConfigurableBase;
   
 /** 
 * 
-* <p>Title: 数据库操作接口</p> 
-* <p>Description:EasyJWeb Tools中的添删改查等业务引擎使用该DAO进行数据库操作 </p> 
+* <p>Title: æ•°æ�®åº“æ“�ä½œæŽ¥å�£</p> 
+* <p>Description:EasyJWeb Toolsä¸­çš„æ·»åˆ æ”¹æŸ¥ç­‰ä¸šåŠ¡å¼•æ“Žä½¿ç”¨è¯¥DAOè¿›è¡Œæ•°æ�®åº“æ“�ä½œ </p> 
 * <p>Copyright: Copyright (c) 2006</p> 
 * @version 0.1 
 */  
 public interface IDAO {  
     /** 
-     * 把对象保存到持久层 
+     * æŠŠå¯¹è±¡ä¿�å­˜åˆ°æŒ�ä¹…å±‚ 
      *  
      * @param obj 
-     * @return 若保存成功，则返回true，否则返回false 
+     * @return è‹¥ä¿�å­˜æˆ�åŠŸï¼Œåˆ™è¿”å›žtrueï¼Œå�¦åˆ™è¿”å›žfalse 
      * @throws IdExistException 
      */  
 	@Transactional(value = "transactionManager", propagation = Propagation.REQUIRED)
-    public boolean save();
+    public <T extends ConfigurableBase> T save( T base);
 	
 //    public boolean save(T obj);  
 
   
 //    /** 
-//     * 更新持久层中的对象 
+//     * æ›´æ–°æŒ�ä¹…å±‚ä¸­çš„å¯¹è±¡ 
 //     *  
 //     * @param obj 
-//     * @return 若修改成功，则返回true，否则返回false 
+//     * @return è‹¥ä¿®æ”¹æˆ�åŠŸï¼Œåˆ™è¿”å›žtrueï¼Œå�¦åˆ™è¿”å›žfalse 
 //     */  
 //    boolean update(T obj);  
 //  
 //    /** 
-//     * 删除持久层中的对象 
+//     * åˆ é™¤æŒ�ä¹…å±‚ä¸­çš„å¯¹è±¡ 
 //     *  
 //     * @param obj 
-//     * @return 若删除操作成功，则返回true，否则返回false 
+//     * @return è‹¥åˆ é™¤æ“�ä½œæˆ�åŠŸï¼Œåˆ™è¿”å›žtrueï¼Œå�¦åˆ™è¿”å›žfalse 
 //     */  
 //    boolean del(T obj);  
 //  
 //    /** 
-//     * 根据类及主键加载对象 
+//     * æ ¹æ�®ç±»å�Šä¸»é”®åŠ è½½å¯¹è±¡ 
 //     *  
 //     * @param clz 
 //     * @param id 
-//     * @return 若查找到指定主键值的持久对象，则返回该对象，否则返回null 
+//     * @return è‹¥æŸ¥æ‰¾åˆ°æŒ‡å®šä¸»é”®å€¼çš„æŒ�ä¹…å¯¹è±¡ï¼Œåˆ™è¿”å›žè¯¥å¯¹è±¡ï¼Œå�¦åˆ™è¿”å›žnull 
 //     */  
 //    T get(Class<T> clz, Serializable id);  
 //  
 //    /** 
-//     * 根据类、字段名及字段值加载对象，只加载一条符合条件的对象。 
+//     * æ ¹æ�®ç±»ã€�å­—æ®µå��å�Šå­—æ®µå€¼åŠ è½½å¯¹è±¡ï¼Œå�ªåŠ è½½ä¸€æ�¡ç¬¦å�ˆæ�¡ä»¶çš„å¯¹è±¡ã€‚ 
 //     *  
 //     * @param clz 
 //     * @param fieldName 
 //     * @param value 
-//     * @return 若查询到指定属性及值的持久对象，则返回该对象，否则返回null 
+//     * @return è‹¥æŸ¥è¯¢åˆ°æŒ‡å®šå±žæ€§å�Šå€¼çš„æŒ�ä¹…å¯¹è±¡ï¼Œåˆ™è¿”å›žè¯¥å¯¹è±¡ï¼Œå�¦åˆ™è¿”å›žnull 
 //     */  
 //    T getBy(Class<T> clz, String fieldName, Serializable value);  
 //  
 //    /** 
-//     * 根据条件查询对象 
+//     * æ ¹æ�®æ�¡ä»¶æŸ¥è¯¢å¯¹è±¡ 
 //     *  
-//     * @param clz 类名 
-//     * @param scope 查询条件 
-//     * @return 返回查询的记录结果记录 
+//     * @param clz ç±»å�� 
+//     * @param scope æŸ¥è¯¢æ�¡ä»¶ 
+//     * @return è¿”å›žæŸ¥è¯¢çš„è®°å½•ç»“æžœè®°å½• 
 //     */  
 //    List<T> query(Class<T> clz, String scope);  
 //  
 //    /** 
-//     * 根据条件、条件参数查询对象 
+//     * æ ¹æ�®æ�¡ä»¶ã€�æ�¡ä»¶å�‚æ•°æŸ¥è¯¢å¯¹è±¡ 
 //     *  
-//     * @param clz 类名 
-//     * @param scope 查询条件 
-//     * @param paras 查询参数 
-//     * @return 返回查询的记录结果集 
+//     * @param clz ç±»å�� 
+//     * @param scope æŸ¥è¯¢æ�¡ä»¶ 
+//     * @param paras æŸ¥è¯¢å�‚æ•° 
+//     * @return è¿”å›žæŸ¥è¯¢çš„è®°å½•ç»“æžœé›† 
 //     */  
 //    List<T> query(Class<T> clz, String scope, Collection paras);  
 //  
 //    /** 
-//     * 查询符合条件的对象，从begin开始取max条记录 
+//     * æŸ¥è¯¢ç¬¦å�ˆæ�¡ä»¶çš„å¯¹è±¡ï¼Œä»Žbeginå¼€å§‹å�–maxæ�¡è®°å½• 
 //     *  
-//     * @param clz Java类 
-//     * @param scope 查询条件 
-//     * @param paras 查询参数 
-//     * @param begin 返回有效结果开始记录数 
-//     * @param max  返回的最多记录数 
-//     * @return 返回查询的记录结果集 
+//     * @param clz Javaç±» 
+//     * @param scope æŸ¥è¯¢æ�¡ä»¶ 
+//     * @param paras æŸ¥è¯¢å�‚æ•° 
+//     * @param begin è¿”å›žæœ‰æ•ˆç»“æžœå¼€å§‹è®°å½•æ•° 
+//     * @param max  è¿”å›žçš„æœ€å¤šè®°å½•æ•° 
+//     * @return è¿”å›žæŸ¥è¯¢çš„è®°å½•ç»“æžœé›† 
 //     */  
 //    List<T> query(Class<T> clz, String scope, Collection paras, int begin, int max);  
 //      
 //    /** 
-//     * 执行sql语句，并返回一个对象,如select count(*) from tableName等 
-//     * @param sql sql语句 
-//     * @return 返回查询结果，若没有结果则返回null 
+//     * æ‰§è¡Œsqlè¯­å�¥ï¼Œå¹¶è¿”å›žä¸€ä¸ªå¯¹è±¡,å¦‚select count(*) from tableNameç­‰ 
+//     * @param sql sqlè¯­å�¥ 
+//     * @return è¿”å›žæŸ¥è¯¢ç»“æžœï¼Œè‹¥æ²¡æœ‰ç»“æžœåˆ™è¿”å›žnull 
 //     */  
 //    Object uniqueResult(String sql);  
 //      
 //    /** 
-//     * 根据sql语句及查询参数执行查询，并返回一个唯一对象，如select count(*) from tableName where filed=? 
+//     * æ ¹æ�®sqlè¯­å�¥å�ŠæŸ¥è¯¢å�‚æ•°æ‰§è¡ŒæŸ¥è¯¢ï¼Œå¹¶è¿”å›žä¸€ä¸ªå”¯ä¸€å¯¹è±¡ï¼Œå¦‚select count(*) from tableName where filed=? 
 //     * @param sql 
 //     * @param paras 
-//     * @return 返回单一的查询结果，若没有结果则返回null 
+//     * @return è¿”å›žå�•ä¸€çš„æŸ¥è¯¢ç»“æžœï¼Œè‹¥æ²¡æœ‰ç»“æžœåˆ™è¿”å›žnull 
 //     */  
 //    Object uniqueResult(String sql,Collection paras);  
 //      
 //    /** 
-//     * 执行任意sql语句，返回受影响的记录数 
-//     * @param sql sql语句 
-//     * @return 返回受影响的记录数 
+//     * æ‰§è¡Œä»»æ„�sqlè¯­å�¥ï¼Œè¿”å›žå�—å½±å“�çš„è®°å½•æ•° 
+//     * @param sql sqlè¯­å�¥ 
+//     * @return è¿”å›žå�—å½±å“�çš„è®°å½•æ•° 
 //     */  
 //    int execute(String sql);   
 //    /** 
-//     * 根据sql语句及参数执行数据库操作，返回受影响的记录数 
-//     * @param sql sql语句 
-//     * @param paras 参数 
-//     * @return 返回受影响的记录数 
+//     * æ ¹æ�®sqlè¯­å�¥å�Šå�‚æ•°æ‰§è¡Œæ•°æ�®åº“æ“�ä½œï¼Œè¿”å›žå�—å½±å“�çš„è®°å½•æ•° 
+//     * @param sql sqlè¯­å�¥ 
+//     * @param paras å�‚æ•° 
+//     * @return è¿”å›žå�—å½±å“�çš„è®°å½•æ•° 
 //     */  
 //    int execute(String sql,Collection paras);  
 }  

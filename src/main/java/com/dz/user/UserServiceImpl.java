@@ -21,12 +21,7 @@ public class UserServiceImpl implements UserService
 	@WebMethod
 	public void addOrUpdateUser( @WebParam(name = "user") User user )
 	{
-		User newUser = new User();
-		
-//		newUser.setID(1);
-		newUser.setUserName("david");
-		
-		userAPIImpl.persistUser();
+		userAPIImpl.persistUser(  user );
 	}
 
 	public UserAPIImpl getUserAPIImpl() {
