@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity       
-@Table(name = "M_MESSAGE")
+@Table(name = "P_MESSAGE")
 public class Message extends ConfigurableBase
 {
 	
