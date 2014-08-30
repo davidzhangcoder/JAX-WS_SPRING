@@ -30,11 +30,21 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 		</wss:service>
 	</wss:binding>
 	
+	
+	
 	<wss:binding url="/userservice">
 		<wss:service>
 			<ws:service bean="#userServiceWs" />
 		</wss:service>
 	</wss:binding>
+	
+	<wss:binding url="/messageservice">
+		<wss:service>
+			<ws:service bean="#messageServiceWs" />
+		</wss:service>
+	</wss:binding>
+	
+	
 	
 
 	<!-- Web service bean -->
@@ -49,13 +59,22 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	
 	<bean id="dAOImpl" class="com.dz.common.DAOImpl" />
 
-	<bean id="userAPIImpl" class="com.dz.user.UserAPIImpl">
+
+	<bean id="userAPIImpl" class="com.dz.service.impl.UserAPIImpl">
 		<property name="dAOImpl" ref="dAOImpl" />
 	</bean>
 		
-
-	<bean id="userServiceWs" class="com.dz.user.UserServiceImpl">
+	<bean id="userServiceWs" class="com.dz.service.impl.UserServiceImpl">
 		<property name="userAPIImpl" ref="userAPIImpl" />
+	</bean>
+
+	
+	<bean id="messageAPIImpl" class="com.dz.service.impl.MessageAPIImpl">
+		<property name="dAOImpl" ref="dAOImpl" />
+	</bean>
+	
+	<bean id="messageServiceWs" class="com.dz.service.impl.MessageServiceImpl">
+		<property name="messageAPIImpl" ref="messageAPIImpl" />
 	</bean>
 	
 	

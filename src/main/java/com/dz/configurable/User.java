@@ -1,7 +1,8 @@
 package com.dz.configurable;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity       
-@Table(name = "USER")
+@Table(name = "U_USER")
 public class User extends ConfigurableBase
 {
 
@@ -47,6 +48,15 @@ public class User extends ConfigurableBase
 	
 	@Column(name = "UPDATED_TIME")
 	private Calendar updatedTime;
+	
+	@javax.persistence.OneToMany(targetEntity = Message.class, 
+			fetch = javax.persistence.FetchType.LAZY, 
+			mappedBy = "user")
+	@org.hibernate.annotations.Cascade({ org.hibernate.annotations.CascadeType.ALL })
+	@org.hibernate.annotations.BatchSize(size = 10)
+	@org.hibernate.annotations.NotFound(action = org.hibernate.annotations.NotFoundAction.IGNORE)
+	private List<Message> messages = new ArrayList<Message>();
+
 	
 	
 	public Integer getID() {

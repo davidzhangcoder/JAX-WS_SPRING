@@ -1,4 +1,4 @@
-package com.dz.service;
+package com.dz.service.impl;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -13,6 +13,16 @@ portName = "MessageServiceImplPort",
 serviceName = "MessageServiceImpl")
 public class MessageServiceImpl implements MessageService
 {
+	
+	private MessageAPIImpl messageAPIImpl;
+
+	public MessageAPIImpl getMessageAPIImpl() {
+		return messageAPIImpl;
+	}
+
+	public void setMessageAPIImpl(MessageAPIImpl messageAPIImpl) {
+		this.messageAPIImpl = messageAPIImpl;
+	}
 
 	@Override
 	@WebMethod

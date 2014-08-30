@@ -15,10 +15,17 @@
 		<url-pattern>/jaxws-spring</url-pattern>
 	</servlet-mapping>
 	
-		<servlet-mapping>
+	
+	<servlet-mapping>
 		<servlet-name>jaxws-servlet</servlet-name>
 		<url-pattern>/userservice</url-pattern>
 	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>jaxws-servlet</servlet-name>
+		<url-pattern>/messageservice</url-pattern>
+	</servlet-mapping>
+
 	
 
 	<!-- Register Spring Listener -->

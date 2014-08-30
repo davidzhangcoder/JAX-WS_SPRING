@@ -1,4 +1,4 @@
-package com.dz.service;
+package com.dz.service.impl;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

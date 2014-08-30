@@ -1,4 +1,4 @@
-package com.dz.service;
+package com.dz.service.impl;
 
 import org.springframework.transaction.annotation.Transactional;
 
