@@ -18,9 +18,11 @@ import javax.persistence.Table;
 
 @Entity       
 @Table(name = "G_GROUP_USER")
-public class GroupUser
+public class GroupUser extends ConfigurableBase
 {
 	
+	private static final long serialVersionUID = -2752842309938493345L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer ID;

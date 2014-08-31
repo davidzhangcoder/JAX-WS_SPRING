@@ -16,26 +16,28 @@ portName = "GroupServiceImplPort",
 serviceName = "GroupServiceImplService")
 public class GroupServiceImpl implements GroupService
 {
+	
+	private GroupAPIImpl groupAPIImpl;
 
 	@Override
 	@WebMethod
 	public void addOrUpdateGroup(@WebParam(name="group") Group group)
 	{
-
+		groupAPIImpl.addOrUpdateGroup(group);
 	}
 
 	@Override
 	@WebMethod
 	public void addOrUpdateGroupUser(@WebParam(name="groupUser") GroupUser groupUser)
 	{
-
+		groupAPIImpl.addOrUpdateGroupUser(groupUser);
 	}
 
 	@Override
 	@WebMethod
 	public void addOrUpdateMessageToGroupUser( @WebParam(name="groupUser") GroupUser groupUser ,  @WebParam(name="message") Message message )
 	{
-
+		groupAPIImpl.addOrUpdateMessageToGroupUser(groupUser,message);
 	}
 
 	@Override
@@ -44,5 +46,15 @@ public class GroupServiceImpl implements GroupService
 	{
 		return null;
 	}
+
+	public GroupAPIImpl getGroupAPIImpl() {
+		return groupAPIImpl;
+	}
+
+	public void setGroupAPIImpl(GroupAPIImpl groupAPIImpl) {
+		this.groupAPIImpl = groupAPIImpl;
+	}
+	
+	
 
 }

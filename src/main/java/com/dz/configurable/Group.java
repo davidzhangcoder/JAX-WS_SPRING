@@ -18,9 +18,11 @@ import javax.persistence.Table;
 
 @Entity       
 @Table(name = "D_MESSAGE")
-public class Group
+public class Group extends ConfigurableBase
 {
 	
+	private static final long serialVersionUID = -7747056983505552408L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer ID;

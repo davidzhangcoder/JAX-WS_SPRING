@@ -28,6 +28,7 @@ public class MessageServiceImpl implements MessageService
 	@WebMethod
 	public void addOrUpdateMessage( @WebParam(name="message") Message message )
 	{
+		messageAPIImpl.persistMessage(message);
 	}
 
 }
