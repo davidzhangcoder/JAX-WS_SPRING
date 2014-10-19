@@ -17,7 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity       
-@Table(name = "D_MESSAGE")
+@Table(name = "G_GROUP")
 public class Group extends ConfigurableBase
 {
 	

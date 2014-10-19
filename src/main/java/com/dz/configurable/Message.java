@@ -42,6 +42,42 @@ public class Message extends ConfigurableBase
 	private Calendar updatedTime;
 
 	
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+	public Calendar getCreatedTime() {
+		return createdTime;
+	}
+	public void setCreatedTime(Calendar createdTime) {
+		this.createdTime = createdTime;
+	}
+	public Integer getUpdatedBy() {
+		return updatedBy;
+	}
+	public void setUpdatedBy(Integer updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+	public Calendar getUpdatedTime() {
+		return updatedTime;
+	}
+	public void setUpdatedTime(Calendar updatedTime) {
+		this.updatedTime = updatedTime;
+	}
 	public Integer getID() {
 		return ID;
 	}

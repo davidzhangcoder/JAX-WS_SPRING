@@ -59,6 +59,14 @@ public class User extends ConfigurableBase
 
 	
 	
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+
 	public Integer getID() {
 		return ID;
 	}

@@ -23,6 +23,8 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
        http://jax-ws.java.net/spring/servlet.xsd">
        
         <context:annotation-config/>
+        
+        
 
 	<wss:binding url="/jaxws-spring">
 		<wss:service>
@@ -41,6 +43,12 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	<wss:binding url="/messageservice">
 		<wss:service>
 			<ws:service bean="#messageServiceWs" />
+		</wss:service>
+	</wss:binding>
+	
+	<wss:binding url="/groupservice">
+		<wss:service>
+			<ws:service bean="#groupServiceWs" />
 		</wss:service>
 	</wss:binding>
 	
@@ -77,6 +85,15 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 		<property name="messageAPIImpl" ref="messageAPIImpl" />
 	</bean>
 	
+
+	<bean id="groupAPIImpl" class="com.dz.service.impl.GroupAPIImpl">
+		<property name="dAOImpl" ref="dAOImpl" />
+	</bean>
+
+	<bean id="groupServiceWs" class="com.dz.service.impl.GroupServiceImpl">
+		<property name="groupAPIImpl" ref="groupAPIImpl" />
+	</bean>
+	
 	
 	
 	<!-- Data Source -->  
@@ -99,23 +116,23 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
   
     
   
-    <!-- JPA Entity Manager Factory -->  
+    <!-- JPA Entity Manager Factory -->  <!-- 相当于Hibernate的SessionFactory -->
     <!--待扫描的实体类包，不再需要persistence.xml了-->  
-<!--     <bean id="entityManagerFactory"  
+    <bean id="entityManagerFactory"  
         class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"  
         p:packagesToScan="com.dz.configurable" 
         p:dataSource-ref="dataSource"  
         p:jpaVendorAdapter-ref="hibernateVendor"
         p:jpaPropertyMap-ref="jpaPropertyMap" 
-    />  -->
+    /> 
 
-	<bean id="entityManagerFactory"
+<!-- 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		p:packagesToScan="com.dz.configurable" 
 		p:jpaVendorAdapter-ref="hibernateVendor">
 		<property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
 		<property name="persistenceUnitName" value="jms" />
-	</bean>
+	</bean> -->
   
     
     <util:map id="jpaPropertyMap">  

@@ -44,7 +44,7 @@ public class GroupServiceImpl implements GroupService
 	@WebMethod
 	public List<Message> getMessageByGroupID(@WebParam(name="groupID") int groupID)
 	{
-		return null;
+		return groupAPIImpl.getMessageByGroupID(groupID);
 	}
 
 	public GroupAPIImpl getGroupAPIImpl() {

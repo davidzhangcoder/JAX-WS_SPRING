@@ -1,10 +1,16 @@
 package com.dz.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.orm.hibernate4.SessionFactoryUtils;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dz.common.DAOImpl;
+import com.dz.common.HibernateUtil;
 import com.dz.configurable.Group;
 import com.dz.configurable.GroupUser;
 import com.dz.configurable.Message;
@@ -33,8 +39,18 @@ public class GroupAPIImpl implements GroupAPI
 	}
 
 	@Override
-	public List<Message> getMessageByGroupID(int groupID) {
-		return null;
+	public List<Message> getMessageByGroupID(int groupID)
+	{
+		
+		List<Message> list = new ArrayList<Message>();
+		
+		Message message = dAOImpl.get(Message.class, groupID);
+		
+//		message.getUser().getMessages();
+//		 
+//		System.out.println( message.getUser().getMessages().size() );
+		
+		return list;
 	}
 
 	
